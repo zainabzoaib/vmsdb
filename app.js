@@ -1,5 +1,4 @@
 const express = require("express");
-require('dotenv').config();
 const mysql = require("mysql2");
 const cors = require("cors");
 const qrcode = require("qrcode");
@@ -7,6 +6,7 @@ const nodemailer = require("nodemailer");
 const app = express();
 
 app.use(cors({ origin: "*" }));
+app.set("port", process.env.PORT || 5000);
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -29,6 +29,10 @@ db.connect((err) => {
   } else {
     console.log("Database connected successfully");
   }
+});
+
+app.get("/", function (request, response) {
+  response.send("Hello World!");
 });
 //all visitors records
 app.get("/api/visitors", (req, res) => {
@@ -290,6 +294,6 @@ app.get("/api/yearlyData", (req, res) => {
   });
 });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+app.listen(app.get("port"), function () {
+  console.log("Node app is running at localhost:" + app.get("port"));
 });
