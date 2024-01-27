@@ -10,11 +10,11 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,  //"35.213.173.85",
-  user: process.env.DB_USER, //"uowax0ps0y2rh",
-  password: process.env.DB_PASS, //"@j2)eP;d2@^&",
-  database: process.env.DB_NAME, //"dbrtaiiidka9wr",
-  port: process.env.DB_PORT, //3306,
+  host: "35.213.173.85",
+  user: "uowax0ps0y2rh",
+  password: "@j2)eP;d2@^&",
+  database: "dbrtaiiidka9wr",
+  port: 3306,
   waitForConnections: true,
   connectionLimit: 10,
   maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`
